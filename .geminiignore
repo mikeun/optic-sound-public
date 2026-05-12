@@ -1,0 +1,11 @@
+# Context Optimization: Ignore heavy/irrelevant files
+node_modules/
+venv/
+.pytest_cache/
+__pycache__/
+dist/
+build/
+*.bin
+*.log
+.git/
+frontend/package-lock.json

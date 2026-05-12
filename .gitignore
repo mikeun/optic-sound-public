@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+venv/
+env/
+.env
+*.venv/
+
+# Node.js
+node_modules/
+dist/
+.eslintcache
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project specific hardware dumps
+card*.txt
+
+# IDEs
+.vscode/
+.idea/

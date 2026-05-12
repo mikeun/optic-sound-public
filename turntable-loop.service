@@ -1,0 +1,14 @@
+[Unit]
+Description=Turntable ALSA Loopback
+After=sound.target
+
+[Service]
+User=<YOUR_USER>
+Group=<YOUR_GROUP>
+Type=simple
+ExecStart=/usr/bin/alsaloop -C hw:2,0 -P turntable_softvol -t 200000 -b
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+services:
+  optic-control:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: optic-control
+    restart: always
+    network_mode: host # Critical for mDNS/AirPlay and low-latency audio
+    volumes:
+      - /dev/snd:/dev/snd # Access to hardware mixers
+      - /etc/asound.conf:/etc/asound.conf:ro # Read-only access to ALSA config
+      - /var/run/dbus:/var/run/dbus # For systemd service status/restarts
+      - /var/lib/alsa:/var/lib/alsa # Shared EQ state
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - ACCESS_PIN=${ACCESS_PIN:-0000}
+      - JWT_SECRET=${JWT_SECRET}
+      - APP_PORT=${APP_PORT:-8000}
+    # Allow the container to run amixer and systemctl restart commands
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
